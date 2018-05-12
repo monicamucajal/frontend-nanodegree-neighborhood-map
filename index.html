@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Map Project">
+  <meta name="author" content="Monica C.">
+	<title>Palos Verdes Neighborhood Map</title>
+	<!-- CSS -->
+  <link rel="stylesheet" href="css/location.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Sunshiney" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container-fluid">
+      <div id="wrapper">
+          <div id="sidebar-wrapper">
+              <div class="input-group">
+                  <input class="form-control" placeholder="Find Location" type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'">
+                  <span class="input-group-btn">
+			      			  <button class="btn btn-primary" type="button">
+                      <!--Filter icon from Font Awesome icons-->
+						    	    <i class="fa fa-filter"></i>
+						        </button>
+					        </span>
+              </div>
+                <ul class="sidebar-nav" data-bind="foreach: filteredLocations" style="margin-top: 45px;">
+                   <li><a href="#" data-bind="text: name" onclick="clickOnMarker(this.innerHTML);"></a></li>
+                </ul>
+              </div>
+            <div id="menu">
+                <a href="#nav-toggle" class="btn btn-default" id="nav-toggle">
+                    <i class="fa fa-plus-square fa-1x"></i>
+                </a>
+            </div>
+        </div>
+        <div id="map"></div>
+	</div>				
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+	<script src="js/location.js"></script>
+    <script>
+        $("#nav-toggle").click(function(e){
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyApy6RcRK82P4ZFpA4BNBkVIbO0lgKQ6EQ&callback=initMap">
+    </script>
+</body>
+</html>
