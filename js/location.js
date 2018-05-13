@@ -172,19 +172,10 @@ function createMarkerWithAddress(addressLocator, resultsMap, location) {
 }
 
 
-/* Click on Marker */
-function clickOnMarker(name) {
-    markers.forEach(function(markerItem) {
-        if (markerItem.name == name) {
-            google.maps.event.trigger(markerItem.marker, 'click');
-        }
-    });
-}
-
-
 /* Knockout process of locations */
 var ViewModel = function() {
     var self = this;
+	self.name = ko.observable();
     this.filter = ko.observable("");
     this.filteredLocations = ko.computed(function() {
         var filter = self.filter().toLowerCase();
@@ -208,4 +199,22 @@ var ViewModel = function() {
             });
         }
     });
+    
+ 
+    /* Map error handling */
+    function mapErrorHandling() {
+    alert("Failed to load resources. Please check your internet connection and try again.");
+    }
+
+	
+	/* Knockout handling of clicks */
+    
+    self.clickOnMarker = function() {
+		var name = this.name;
+		markers.forEach(function(markerItem) {
+			if (markerItem.name == name) {
+				google.maps.event.trigger(markerItem.marker, 'click');
+			}
+		});
+	};
 };
