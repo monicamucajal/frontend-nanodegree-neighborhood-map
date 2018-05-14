@@ -35,6 +35,12 @@ var markers = [];
 var infoWindow;
 var map;
 
+/* Map error handling */
+function mapErrorHandling() {
+    alert("Unable to reach Google maps API");
+}
+
+
 /* Retrieve Foursquare Info using API */
 function foursquareInfo(location) {
     var clientID = 'CMJZORWEWUFBQJJZEO5PPUN4VKFMZQ22FYRKD1Y0LYCRYOVV';
@@ -175,7 +181,7 @@ function createMarkerWithAddress(addressLocator, resultsMap, location) {
 /* Knockout process of locations */
 var ViewModel = function() {
     var self = this;
-	self.name = ko.observable();
+    self.name = ko.observable();
     this.filter = ko.observable("");
     this.filteredLocations = ko.computed(function() {
         var filter = self.filter().toLowerCase();
@@ -199,22 +205,17 @@ var ViewModel = function() {
             });
         }
     });
-    
- 
-    /* Map error handling */
-    function mapErrorHandling() {
-    alert("Failed to load resources. Please check your internet connection and try again.");
-    }
 
-	
-	/* Knockout handling of clicks */
-    
+
+
+    /* Knockout handling of clicks */
+
     self.clickOnMarker = function() {
-		var name = this.name;
-		markers.forEach(function(markerItem) {
-			if (markerItem.name == name) {
-				google.maps.event.trigger(markerItem.marker, 'click');
-			}
-		});
-	};
+        var name = this.name;
+        markers.forEach(function(markerItem) {
+            if (markerItem.name == name) {
+                google.maps.event.trigger(markerItem.marker, 'click');
+            }
+        });
+    };
 };
