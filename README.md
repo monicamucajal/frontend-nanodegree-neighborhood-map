@@ -12,7 +12,7 @@ Overall this was an extremely complex project.  Could not make the new Yelp Fusi
 
 
 ## GitHub Repository 
-GitHub Project Repository: [https://github.com/monicamucajal/frontend-nanodegree-arcade-game](https://github.com/monicamucajal/frontend-nanodegree-arcade-game/ "GitHub project repository")
+GitHub Project Repository: [https://github.com/monicamucajal/frontend-nanodegree-neighborhood-map](https://github.com/monicamucajal/frontend-nanodegree-neighborhood-map/ "GitHub project repository")
 
 
 ## Installation
